@@ -3,6 +3,8 @@
 var express = require("express");
 var path = require("path");
 
+app.use(express.static('public'));
+
 // Sets up the Express App
 // =============================================================
 var app = express();

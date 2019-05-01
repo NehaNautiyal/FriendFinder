@@ -1,7 +1,7 @@
-var tableArray = [
+var friendResults = [
     {
 
     }
 ]
 
-module.exports = tableArray;
+module.exports = friendResults;
