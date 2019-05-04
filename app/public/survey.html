@@ -16,16 +16,35 @@
 
 <body>
     <div class="container">
-        <h1>Find a Friend!</h1>
-        <h2>Answer some questions</h2>
-        <a href="/survey"><button>Go to the Survey</button></a>
+        <h1>Find a Friend to Bond with by answering the questions below:</h1><a href="/"><span><button>Home</button></a></span>
+
+        <hr>
+
+        <h4>Your Name:</h4> <input type="text" id="name" class="form-control" required>
+        <h4>Link to Photo:</h4> <input type="text" id="photo" class="form-control" required>
+
+        <hr>
+
+        <div class="col-auto my-1">
+            <label class="mr-sm-2" for="inlineFormCustomSelect">Question 1</label>
+            <select class="custom-select mr-sm-2" id="q1" id="inlineFormCustomSelect">
+                <option selected>Choose...</option>
+                <option value="1">1 (Strongly Disagree)</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+                <option value="4">Three</option>
+                <option value="5">5 (Strongly Agree)</option>
+            </select>
+        </div>
+
+        <div class="col-auto my-1">
+            <button type="submit" class="btn btn-primary submit">Submit</button>
+        </div>
 
 
 
 
-
-
-
+        <a href="/api/friends">API Friends Link</a> 
 
     </div>
 
@@ -34,7 +53,51 @@
         crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
-    <script src="../data/friends.js"></script>
+    <script type="text/javascript">
+      $(".submit").on("click", function(event) {
+    event.preventDefault();
+
+    // Here we grab the form elements
+    var newFriend = {
+        name: $("#name").val().trim(),
+        photo: $("#photo").val().trim(),
+        scores: [
+            parseInt($("#q1").val()),
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+        ]
+    };
+
+    console.log(newFriend);
+
+    // This line is the magic. It"s very similar to the standard ajax function we used.
+    // Essentially we give it a URL, we give it the object we want to send, then we have a "callback".
+    // The callback is the response of the server. In our case, we set up code in api-routes that "returns" true or false
+    // depending on if a tables is available or not.
+
+    $.post("/api/friends", newFriend,
+      function(data) {
+
+      console.log(`Your data has been posted!`);
+
+        // Clear the form when submitting
+        $("#name").val("");
+        $("#photo").val("");
+        $("#q1").val("");
+
+      });
+
+  });
+
+
+    </script>
 </body>
 
 </html>

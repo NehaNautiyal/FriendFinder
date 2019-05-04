@@ -1,0 +1,15 @@
+body {
+    background-image: url("../spark-bg.jpg");
+}
+
+.container {
+    background: black;
+}
+
+h1, h4, label {
+    color: silver;
+}
+
+.custom-select {
+    width: 25%;
+}
