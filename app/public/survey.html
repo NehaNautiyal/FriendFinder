@@ -10,13 +10,29 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
         crossorigin="anonymous">
     <!-- Personal CSS -->
-    <link rel="stylesheet" type="text/css" media="screen" href="../images/css/style.css" />
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="../images/css/style.css" /> -->
+    <style>
+        body {
+    background-image: url("https://i.ytimg.com/vi/2CPm1HK4ROo/maxresdefault.jpg");
+}
 
+
+    h1, h2, h4, label {
+    color: gold;
+    text-align: center;
+    margin: 0 auto;
+    background: black;
+}
+
+    .custom-select, .form-control {
+    width: 25%;
+}
+</style>
 </head>
 
 <body>
     <div class="container">
-        <h1>Find a Friend to Bond with by answering the questions below:</h1><a href="/"><span><button>Home</button></a></span>
+        <h1>Find your Spark!</h1><h2>Answer the questions below.</h2><a href="/"><span><button class="btn btn-secondary">Home</button></a></span>
 
         <hr>
 
@@ -48,7 +64,8 @@
             </select>
         </div>
         <div class="col-auto my-1">
-            <label class="mr-sm-2" for="inlineFormCustomSelect">3. You will do the dishes when you run out of clean dishes.</label>
+            <label class="mr-sm-2" for="inlineFormCustomSelect">3. You will do the dishes when you run out of clean
+                dishes.</label>
             <select class="custom-select mr-sm-2" id="q3" id="inlineFormCustomSelect">
                 <option selected>Choose...</option>
                 <option value="1">1 (Strongly Disagree)</option>
@@ -59,7 +76,8 @@
             </select>
         </div>
         <div class="col-auto my-1">
-            <label class="mr-sm-2" for="inlineFormCustomSelect">4. Your laundry is folded and put away as soon as the dryer beeps.</label>
+            <label class="mr-sm-2" for="inlineFormCustomSelect">4. Your laundry is folded and put away as soon as the
+                dryer beeps.</label>
             <select class="custom-select mr-sm-2" id="q4" id="inlineFormCustomSelect">
                 <option selected>Choose...</option>
                 <option value="1">1 (Strongly Disagree)</option>
@@ -70,7 +88,8 @@
             </select>
         </div>
         <div class="col-auto my-1">
-            <label class="mr-sm-2" for="inlineFormCustomSelect">5. Your favorite Friday night activity is takeout and watching Netflix.</label>
+            <label class="mr-sm-2" for="inlineFormCustomSelect">5. Your favorite Friday night activity is takeout and
+                watching Netflix.</label>
             <select class="custom-select mr-sm-2" id="q5" id="inlineFormCustomSelect">
                 <option selected>Choose...</option>
                 <option value="1">1 (Strongly Disagree)</option>
@@ -81,7 +100,8 @@
             </select>
         </div>
         <div class="col-auto my-1">
-            <label class="mr-sm-2" for="inlineFormCustomSelect">6. Your take on traveling is going to see all the beaches in France for a few weeks.</label>
+            <label class="mr-sm-2" for="inlineFormCustomSelect">6. Your take on traveling is going to see all the
+                beaches in France for a few weeks.</label>
             <select class="custom-select mr-sm-2" id="q6" id="inlineFormCustomSelect">
                 <option selected>Choose...</option>
                 <option value="1">1 (Strongly Disagree)</option>
@@ -137,13 +157,40 @@
         </div>
 
         <div class="col-auto my-1">
-            <button type="submit" class="btn btn-primary submit">Submit</button>
+            <button type="submit" class="btn btn-primary submit" data-toggle="modal" data-target="#exampleModalCenter">Submit</button>
+        </div>
+
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Your closest match is...</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <h5 id="match-name"></h5>
+                        <p>Congratulations!
+                            <!-- <a href="#" role="button" class="btn btn-secondary popover-test" title="Popover title"
+                                data-content="Popover body content is set in this attribute.">button</a>  -->
+                        </p>
+                        <img src="" id="match-img">
+                        <!-- <p><a href="#" class="tooltip-test" title="Tooltip">This link</a> and <a href="#" class="tooltip-test"
+                                title="Tooltip">that link</a> have tooltips on hover.</p> -->
+                    </div>
+                    <!-- <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+                    <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                </div>
+            </div>
         </div>
 
 
 
 
-        <a href="/api/friends">API Friends Link</a> 
+        <a href="/api/friends">API Friends Link</a>
 
     </div>
 
@@ -153,44 +200,49 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
     <script type="text/javascript">
-      $(".submit").on("click", function(event) {
-    event.preventDefault();
-
-    // Here we grab the form elements
-    var newFriend = {
-        name: $("#name").val().trim(),
-        photo: $("#photo").val().trim(),
-        scores: [
-            parseInt($("#q1").val()),
-            parseInt($("#q2").val()),
-            parseInt($("#q3").val()),
-            parseInt($("#q4").val()),
-            parseInt($("#q5").val()),
-            parseInt($("#q6").val()),
-            parseInt($("#q7").val()),
-            parseInt($("#q8").val()),
-            parseInt($("#q9").val()),
-            parseInt($("#q10").val())
-        ]
-    };
-
-    console.log(newFriend);
-
-    $.post("/api/friends", newFriend,
-      function(data) {
-
-      console.log(`Your data has been posted!`);
-
-        // Clear the form when submitting
-        $("#name").val("");
-        $("#photo").val("");
-        $(".custom-select").val("");
-
-      });
 
 
+        $(".submit").on("click", function (event) {
+            event.preventDefault();
 
-  });
+            // Here we grab the form elements
+            var newFriend = {
+                name: $("#name").val().trim(),
+                photo: $("#photo").val().trim(),
+                scores: [
+                    parseInt($("#q1").val()),
+                    parseInt($("#q2").val()),
+                    parseInt($("#q3").val()),
+                    parseInt($("#q4").val()),
+                    parseInt($("#q5").val()),
+                    parseInt($("#q6").val()),
+                    parseInt($("#q7").val()),
+                    parseInt($("#q8").val()),
+                    parseInt($("#q9").val()),
+                    parseInt($("#q10").val())
+                ]
+            };
+
+            console.log(newFriend);
+
+            $.post("/api/friends", newFriend,
+                function (data) {
+
+                    console.log(`Your data has been posted!`);
+
+                    // Clear the form when submitting
+                    $("#name").val("");
+                    $("#photo").val("");
+                    $(".custom-select").val("");
+
+                });
+
+
+
+
+
+
+        });
 
 
     </script>
