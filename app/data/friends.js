@@ -3,64 +3,64 @@ var friendResults = [
         name: "Tom Cruise",
         photo: "",
         scores: [
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
+            3,
+            4,
+            4,
+            2,
+            1,
+            5,
+            1,
+            2,
+            2,
+            2
         ]
     },
     {
         name: "Barack Obama",
         photo: "https://media2.s-nbcnews.com/j/newscms/2017_06/1893536/170207-barack-obama-kitesurfing-03-741a_bd8a81b6f18280e406354365c30a3c24.fit-760w.jpg",
         scores: [
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
+            5,
+            3,
+            5,
+            3,
+            3,
+            3,
+            2,
+            4,
+            5,
+            3
         ]
     },
     {
         name: "Beyonce",
         photo: "",
         scores: [
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
+            2,
+            5,
+            2,
+            4,
+            5,
+            2,
+            4,
+            1,
+            3,
+            4
         ]
     },
     {
         name: "Madonna",
         photo: "",
         scores: [
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
+            4,
+            5,
+            1,
+            5,
+            4,
+            1,
+            2,
+            3,
+            4,
+            5
         ]
     },
     {

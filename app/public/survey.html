@@ -32,7 +32,8 @@
 
 <body>
     <div class="container">
-        <h1><span>Find your Spark!</span></h1><h2><span>Answer the questions below.</span></h2>
+        <h1><span>Find your Spark!</span></h1>
+        <h2><span>Answer the questions below.</span></h2>
         <a href="/"><span><button class="btn btn-secondary">Home</button></a></span>
 
         <hr>
@@ -135,7 +136,8 @@
             </select>
         </div>
         <div class="col-auto my-1">
-            <label class="mr-sm-2" for="inlineFormCustomSelect">9. If you are meeting someone for lunch at noon, you show up at 11:40am.</label>
+            <label class="mr-sm-2" for="inlineFormCustomSelect">9. If you are meeting someone for lunch at noon, you
+                show up at 11:40am.</label>
             <select class="custom-select mr-sm-2" id="q9" id="inlineFormCustomSelect">
                 <option selected>Choose...</option>
                 <option value="1">1 (Strongly Disagree)</option>
@@ -146,7 +148,8 @@
             </select>
         </div>
         <div class="col-auto my-1">
-            <label class="mr-sm-2" for="inlineFormCustomSelect">10. Why wait until tomorrow what you can accomplish today.</label>
+            <label class="mr-sm-2" for="inlineFormCustomSelect">10. Why wait until tomorrow what you can accomplish
+                today?</label>
             <select class="custom-select mr-sm-2" id="q10" id="inlineFormCustomSelect">
                 <option selected>Choose...</option>
                 <option value="1">1 (Strongly Disagree)</option>
@@ -224,7 +227,7 @@
                 ]
             };
 
-            console.log(newFriend);
+            console.log(`New Friend: ${newFriend}`);
 
             $.post("/api/friends", newFriend,
                 function (data) {
@@ -235,13 +238,13 @@
                     $("#name").val("");
                     $("#photo").val("");
                     $(".custom-select").val("");
-
                 });
 
-            $.get("/api/friends/match", function (data) {
-                console.log(data);
-            });
-
+            $.ajax({ url: "/api/friends/match", method: "GET" })
+                .then(function (data) {
+                    $("#match-name").text(data.name);
+                    console.log(data);
+                });
 
 
 

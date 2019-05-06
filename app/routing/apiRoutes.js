@@ -19,20 +19,31 @@ module.exports = function (app) {
 
     function difference(a, b) {
         return Math.abs(a - b);
-      }
+    }
+
+    var diffArrayOneFriend = [];
+    var diffArray = [];
+    var friendDiff = 0;
 
     app.get(`/api/friends/match`, function (req, res) {
-        var diffArray = [];
-        var friendDiff = 0;
         var currentFriend = friendData[friendData.length - 1];
-        // console.log(friendData);
+        console.log(currentFriend);
 
 
-        for (let i = 0; i < friendData.length; i++) {
-            friendDiff = difference(friendData[i].scores, currentFriend.scores);
-            diffArray.push(friendDiff); //length 10
+        for (let i = 0; i < friendData.length - 1; i++) {
+            for (let j = 0; j < 10; j++) {
+                friendDiff = friendDiff + difference(friendData[i].scores[j], currentFriend.scores[j]);
+                console.log(friendDiff); //each element should be the total difference for 1 friend
+            }
+            diffArray.push(friendDiff); //length # of friends -1
             console.log(diffArray);
+            friendDiff = 0;
+            
         }
+        var matchElement = diffArray.reduce((a, b) => Math.min(a, b));
+        var bestMatch = diffArray.indexOf(matchElement);
+
+        res.json(friendData[bestMatch]);
 
 
     });
