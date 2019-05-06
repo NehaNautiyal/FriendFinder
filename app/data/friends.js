@@ -1,7 +1,7 @@
 var friendResults = [
     {
         name: "Tom Cruise",
-        photo: "",
+        photo: "http://www.wow247.co.uk/wp-content/uploads/2013/04/Tom-Cruise-spy.jpg",
         scores: [
             3,
             4,
@@ -33,7 +33,7 @@ var friendResults = [
     },
     {
         name: "Beyonce",
-        photo: "",
+        photo: "https://upload.wikimedia.org/wikipedia/lt/9/93/Beyonce_Formation.jpg",
         scores: [
             2,
             5,
@@ -49,7 +49,7 @@ var friendResults = [
     },
     {
         name: "Madonna",
-        photo: "",
+        photo: "https://www.billboard.com/files/styles/article_main_image/public/media/madonna-2003-billboard-1548.jpg",
         scores: [
             4,
             5,
