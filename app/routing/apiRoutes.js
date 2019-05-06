@@ -44,7 +44,7 @@ module.exports = function (app) {
         var bestMatch = diffArray.indexOf(matchElement);
 
         res.json(friendData[bestMatch]);
-
+        diffArray = [];
 
     });
 }

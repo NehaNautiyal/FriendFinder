@@ -9,13 +9,14 @@
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
         crossorigin="anonymous">
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Patrick+Hand" rel="stylesheet">
     <!-- Personal CSS -->
     <!-- <link rel="stylesheet" type="text/css" media="screen" href="../images/css/style.css" /> -->
     <style>
-        body {
+    body {
     background-image: url("https://i.ytimg.com/vi/2CPm1HK4ROo/maxresdefault.jpg");
 }
-
 
     span, label {
     color: gold;
@@ -25,8 +26,25 @@
 }
 
     .custom-select, .form-control {
-    width: 25%;
+    width: 20%;
 }
+
+    label, input {
+    display: inline-block;
+}
+
+    input {
+    width: 30%
+}
+
+    h1, h2, label {
+        font-family: 'Patrick Hand', cursive;
+    }
+
+    label {
+        font-size: 1.5em;
+    }
+
 </style>
 </head>
 
@@ -34,13 +52,14 @@
     <div class="container">
         <h1><span>Find your Spark!</span></h1>
         <h2><span>Answer the questions below.</span></h2>
-        <a href="/"><span><button class="btn btn-secondary">Home</button></a></span>
+        <!-- <a href="/"><span><button class="btn btn-secondary">Home</button></a></span> -->
 
         <hr>
-
-        <h4><span>Your Name: </span></h4><input type="text" id="name" class="form-control" required>
-        <h4><span>Link to Photo:</span></h4> <input type="text" id="photo" class="form-control" required>
-
+        <div class="form-element">
+            <label for="name">Your Name:  </label><input type="text" name="name" id="name" required></h4>
+            <label for="photo">Link to your Photo: </label><input type="text" name="photo" id="photo" required></h4>
+            <!-- <h4 class="input"><span>Link to Photo: <input type="text" id="photo" class="form-control" required></span></h4> -->
+        </div>
         <hr>
 
         <div class="col-auto my-1">
@@ -164,19 +183,19 @@
             <button type="submit" class="btn btn-primary submit" data-toggle="modal" data-target="#exampleModalCenter">Submit</button>
         </div>
 
-        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        <div class="modal fade modal-lg" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
             aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle">Your closest match is...</h5>
+                        <h5 class="modal-title" id="exampleModalLongTitle"></h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
                         <h5 id="match-name"></h5>
-                        <p>Congratulations!
+                        <p>
                             <!-- <a href="#" role="button" class="btn btn-secondary popover-test" title="Popover title"
                                 data-content="Popover body content is set in this attribute.">button</a>  -->
                         </p>
@@ -208,6 +227,13 @@
 
         $(".submit").on("click", function (event) {
             event.preventDefault();
+
+            if ($("#name").val().trim() === "" ||
+            $("#photo").val().trim() === "" ||
+            !$(".custom-select").val()) {
+                alert("You have left 1 or more fields empty. Please submit when all fields have been entered.");
+                return;
+            }
 
             // Here we grab the form elements
             var newFriend = {
@@ -242,8 +268,8 @@
 
             $.ajax({ url: "/api/friends/match", method: "GET" })
                 .then(function (data) {
-                    $("#match-name").text(data.name);
-                    console.log(data);
+                    $("#match-name").text(`Congratulations! Your closest match is...${data.name}`);
+                    $("#match-img").attr("src", data.photo).css("width", "auto");
                 });
 
 
