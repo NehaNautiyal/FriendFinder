@@ -10,19 +10,30 @@ module.exports = function (app) {
 
     app.get("/api/friends", function (req, res) {
         res.json(friendData);
-        console.log(friendData);
     });
 
     app.post("/api/friends", function (req, res) {
         friendData.push(req.body);
-        console.log(req.body);
         res.json(true);
     });
 
-    app.get(`/api/friends/match`, function (req, res) {
-        var match = [];
-        var friendDiff = 0;
+    function difference(a, b) {
+        return Math.abs(a - b);
+      }
 
-        
+    app.get(`/api/friends/match`, function (req, res) {
+        var diffArray = [];
+        var friendDiff = 0;
+        var currentFriend = friendData[friendData.length - 1];
+        // console.log(friendData);
+
+
+        for (let i = 0; i < friendData.length; i++) {
+            friendDiff = difference(friendData[i].scores, currentFriend.scores);
+            diffArray.push(friendDiff); //length 10
+            console.log(diffArray);
+        }
+
+
     });
 }
