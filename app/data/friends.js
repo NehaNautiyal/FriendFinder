@@ -17,7 +17,7 @@ var friendResults = [
     },
     {
         name: "Barack Obama",
-        photo: "",
+        photo: "https://media2.s-nbcnews.com/j/newscms/2017_06/1893536/170207-barack-obama-kitesurfing-03-741a_bd8a81b6f18280e406354365c30a3c24.fit-760w.jpg",
         scores: [
             0,
             0,
