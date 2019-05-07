@@ -25,4 +25,4 @@ The purpose of this app is to find a match depending on your answers to a survey
 
 ## Link to Deployed Site
 
-(find-your-spark.herokuapp.com)
+(http://find-your-spark.herokuapp.com)
